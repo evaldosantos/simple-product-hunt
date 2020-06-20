@@ -3,23 +3,17 @@ function sortBy(arr, key) {
 }
 
 class ProductList extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      products: []
-    };
-
-    this.handleProductUpVote = this.handleProductUpVote.bind(this);
+  state = {
+    products: []
   }
-
+  
   componentDidMount() {
     this.setState({
       products: Seed.products
     })
   }
 
-  handleProductUpVote(productId) {
+  handleProductUpVote = (productId) => {
     const { products } = this.state;
     
     const nextProducts = products.map(product => (
@@ -57,12 +51,7 @@ class ProductList extends React.Component {
 }
 
 class Product extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleUpVote = this.handleUpVote.bind(this);
-  }
-
-  handleUpVote() {
+  handleUpVote = () => {
     const { onVote } = this.props;
     onVote(this.props.id);
   }
